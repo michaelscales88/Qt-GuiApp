@@ -4,11 +4,11 @@
 
 TEMPLATE = app
 TARGET = 
-DEPENDPATH += . src
-INCLUDEPATH += .
+DEPENDPATH += . src headers
+INCLUDEPATH += . headers
 
 # Input
-HEADERS += ./src/test.cpp
+HEADERS += headers/test.h
 SOURCES += src/App.cpp src/test.cpp
 
 # Output

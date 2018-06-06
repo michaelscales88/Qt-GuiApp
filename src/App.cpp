@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "./src/test.cpp"
+#include "test.h"
+
 using namespace std;
 
 int main(int argv, char **args) {

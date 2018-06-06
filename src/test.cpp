@@ -1,7 +1,4 @@
-#include <cstdlib>
-#include <string>
-
-using namespace std;
+#include "test.h"
 
 string fnTest() {
    return "Test Fn";

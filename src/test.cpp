@@ -1,7 +1,8 @@
 #include <cstdlib>
 #include <string>
 
+using namespace std;
+
 string fnTest() {
-   string value = "Test value";
-   return value;
+   return "Test Fn";
 }

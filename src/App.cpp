@@ -3,12 +3,13 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "test.h"
+#include "./src/test.cpp"
+using namespace std;
 
 int main(int argv, char **args) {
    QApplication app(argv, args);
    QTextEdit textEdit;
-
+   cout << fnTest() << endl;
    textEdit.show();
    return app.exec();
 }

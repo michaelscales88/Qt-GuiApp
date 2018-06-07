@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET = GuiApp.app
 DEPENDPATH += . headers src
 INCLUDEPATH += . headers
 

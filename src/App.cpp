@@ -1,20 +1,15 @@
 #include <QApplication>
-#include <QTextEdit>
-#include <cstdlib>
-#include <iostream>
-
-#include "test.h"
-
-using namespace std;
-
-#include <QApplication>
 #include <QHBoxLayout>
 #include <QSlider>
 #include <QSpinBox>
 
-#include "test.h"
+#include "dollars_widget.h"
+#include "gpa_widget.h"
+#include "hobbies_widget.h"
+#include "sat_widget.h"
 
 using namespace std;
+
 
 int main(int argc, char *argv[]) {
    QApplication app(argc, argv);
@@ -33,7 +28,7 @@ int main(int argc, char *argv[]) {
    layout->addWidget(spinBox);
    layout->addWidget(slider);
    window->setLayout(layout);
-   cout << fnTest() << endl;
+   GpaWidget gpaWidget = GpaWidget();
    window->show();
    return app.exec();
 }

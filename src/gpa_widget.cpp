@@ -1,10 +1,5 @@
 #include "gpa_widget.h"
 
-string test() {
-   return "test";
-}
+GpaWidget::GpaWidget() { cout << "create gpa widget" << endl; }
 
-GpaWidget::GpaWidget() { cout << test() << endl; }
-
-GpaWidget::~GpaWidget() { cout << "destroy" << endl; }
-
+GpaWidget::~GpaWidget() { cout << "destroyed gpa widget" << endl; }

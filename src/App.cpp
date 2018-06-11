@@ -29,6 +29,9 @@ int main(int argc, char *argv[]) {
    layout->addWidget(slider);
    window->setLayout(layout);
    GpaWidget gpaWidget = GpaWidget();
+   DollarsWidget dollarWidget = DollarsWidget();
+   SatWidget satWidget = SatWidget();
+   HobbiesWidget hobbiesWidget = HobbiesWidget();
    window->show();
    return app.exec();
 }

@@ -4,8 +4,6 @@
 
 using namespace std;
 
-string test();
-
 class GpaWidget {
    private:
 

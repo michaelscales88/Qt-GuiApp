@@ -1,13 +1,18 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <QWidget>
+
 
 using namespace std;
 
-class GpaWidget {
-   private:
+class GpaWidget: public QWidget
+{
+   Q_OBJECT
 
-   public:
-      GpaWidget();
-      ~GpaWidget();
+public:
+   GpaWidget( QWidget *parent = 0 );
+   ~GpaWidget();
+
+signals:
 };

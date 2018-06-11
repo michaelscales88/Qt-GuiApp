@@ -1,5 +1,5 @@
 #include <QApplication>
-#include <QHBoxLayout>
+//#include <QHBoxLayout>
 #include <QSlider>
 #include <QSpinBox>
 
@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
    QApplication app(argc, argv);
-   QWidget *window = new QWidget;
+   /*QWidget *window = new QWidget;
    window->setWindowTitle("Enter Your Age");
    QSpinBox *spinBox = new QSpinBox;
    QSlider *slider = new QSlider(Qt::Vertical);
@@ -27,11 +27,12 @@ int main(int argc, char *argv[]) {
    QHBoxLayout *layout = new QHBoxLayout;
    layout->addWidget(spinBox);
    layout->addWidget(slider);
-   window->setLayout(layout);
-   GpaWidget gpaWidget = GpaWidget();
-   DollarsWidget dollarWidget = DollarsWidget();
+   window->setLayout(layout);*/
+   GpaWidget *gpaWidget = new GpaWidget;
+   gpaWidget->show();
+   /*DollarsWidget dollarWidget = DollarsWidget();
    SatWidget satWidget = SatWidget();
    HobbiesWidget hobbiesWidget = HobbiesWidget();
-   window->show();
+   window->show();*/
    return app.exec();
 }

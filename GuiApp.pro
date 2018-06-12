@@ -11,12 +11,16 @@ INCLUDEPATH += . headers
 HEADERS += headers/dollars_widget.h \
            headers/gpa_widget.h \
            headers/hobbies_widget.h \
-           headers/sat_widget.h
+           headers/sat_widget.h \
+           headers/window.h \
+           headers/flowlayout.h
 SOURCES += src/app.cpp \
            src/dollars_widget.cpp \
            src/gpa_widget.cpp \
            src/hobbies_widget.cpp \
-           src/sat_widget.cpp
+           src/sat_widget.cpp \
+           src/window.cpp \
+           src/flowlayout.cpp
 
 # Output
 DESTDIR=bin #Target file directory

@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
    window.addWidget(new GpaWidget);
    window.addWidget(new SatWidget);
    window.addWidget(new DollarsWidget);
-   window.show();
+   window.addWidget(new HobbiesWidget);
+   window.initView();
    return app.exec();
 }

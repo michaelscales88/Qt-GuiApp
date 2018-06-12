@@ -1,5 +1,8 @@
 #pragma once
 #include <QWidget>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include "flowlayout.h"
 
@@ -11,10 +14,13 @@ class Window: public QWidget
 
 public:
    Window( QWidget *parent = 0 );
-   ~Window();
+   ~Window() {}
 
    void addWidget( QWidget *item = 0 );
+   void initView();
+
 private:
-   FlowLayout *layout;
+   FlowLayout *wLayout;
+   QHBoxLayout *hLayout;
    bool showWidgets;
 };

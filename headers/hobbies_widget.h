@@ -1,13 +1,17 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QListWidget>
+#include <QLabel>
 
 using namespace std;
 
-class HobbiesWidget {
+class HobbiesWidget: public QWidget {
    private:
 
    public:
-      HobbiesWidget();
-      ~HobbiesWidget();
+      HobbiesWidget( QWidget *parent = 0 );
+      ~HobbiesWidget() {}
 };

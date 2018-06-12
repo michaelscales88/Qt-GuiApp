@@ -13,14 +13,16 @@ HEADERS += headers/dollars_widget.h \
            headers/hobbies_widget.h \
            headers/sat_widget.h \
            headers/window.h \
-           headers/flowlayout.h
+           headers/flowlayout.h \
+           headers/student_selector.h
 SOURCES += src/app.cpp \
            src/dollars_widget.cpp \
            src/gpa_widget.cpp \
            src/hobbies_widget.cpp \
            src/sat_widget.cpp \
            src/window.cpp \
-           src/flowlayout.cpp
+           src/flowlayout.cpp \
+           src/student_selector.cpp
 
 # Output
 DESTDIR=bin #Target file directory

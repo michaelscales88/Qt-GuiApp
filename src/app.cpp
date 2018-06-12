@@ -8,6 +8,7 @@
 #include "gpa_widget.h"
 #include "hobbies_widget.h"
 #include "sat_widget.h"
+#include "student_selector.h"
 #include "window.h"
 
 using namespace std;
@@ -21,12 +22,10 @@ int main(int argc, char *argv[]) {
    QApplication app(argc, argv);
    Window window;
    window.setWindowTitle("Informed Decision");
+   window.addWidget(new StudentSelector);
    window.addWidget(new GpaWidget);
-   /*layout->addWidget(gpaWidget);
-   gpaWidget->show();
-   DollarsWidget dollarWidget = DollarsWidget();
-   SatWidget satWidget = SatWidget();
-   HobbiesWidget hobbiesWidget = HobbiesWidget();*/
+   window.addWidget(new SatWidget);
+   window.addWidget(new DollarsWidget);
    window.show();
    return app.exec();
 }

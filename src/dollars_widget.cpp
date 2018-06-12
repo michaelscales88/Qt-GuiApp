@@ -1,5 +1,13 @@
 #include "dollars_widget.h"
 
-DollarsWidget::DollarsWidget() { cout << "create dollar widget" << endl; }
+DollarsWidget::DollarsWidget(QWidget *parent)
+              :QWidget(parent)
+{
+   QLabel *label = new QLabel;
+   label->setText("Enter your available funds");
 
-DollarsWidget::~DollarsWidget() { cout << "destroy dollar widget" << endl; }
+   QHBoxLayout *layout = new QHBoxLayout;
+   layout->addWidget(label);
+   setLayout(layout);
+}
+

@@ -22,7 +22,12 @@ void Window::addWidget(QWidget *item)
 
 void Window::initView()
 {
+   QPushButton *quitBtn = new QPushButton(tr("Exit"));
    hLayout->addWidget(new QPushButton(tr("Submit")));
-   hLayout->addWidget(new QPushButton(tr("Exit")));
+   hLayout->addWidget(quitBtn);
+   connect(
+      quitBtn, SIGNAL(clicked()),
+      this, SLOT(close())
+   );
    show();
 }

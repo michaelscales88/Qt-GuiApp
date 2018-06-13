@@ -3,7 +3,6 @@
 SatWidget::SatWidget(QWidget *parent)
           :QWidget(parent)
 {
-   cout << "create sat widget" << endl;
    QLabel *label = new QLabel(this);
    label->setText("Enter your SAT score:");
    QComboBox *combo = new QComboBox(this);

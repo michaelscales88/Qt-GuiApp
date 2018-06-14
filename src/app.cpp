@@ -7,6 +7,7 @@
 #include "dollars_widget.h"
 #include "gpa_widget.h"
 #include "hobbies_widget.h"
+#include "output_widget.h"
 #include "sat_widget.h"
 #include "student_selector.h"
 #include "window.h"

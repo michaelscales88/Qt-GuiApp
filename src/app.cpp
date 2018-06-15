@@ -1,8 +1,4 @@
 #include <QApplication>
-#include <QStyle>
-#include <QSlider>
-#include <QSpinBox>
-#include <QHBoxLayout>
 
 #include "dollars_widget.h"
 #include "gpa_widget.h"
@@ -14,16 +10,15 @@
 
 using namespace std;
 
-/*
- * Input widget -> take input/display selection
- * Output widget -> display static data for each area
- * */
-
 int main(int argc, char *argv[]) {
    QApplication app(argc, argv);
    Window window;
    window.setWindowTitle("Informed Decision");
-   window.addWidget(new StudentSelector);
+   OutputWidget* output = new OutputWidget();
+   StudentSelector* studentType = new StudentSelector();
+   window.setOutput(output);
+   window.addWidget(studentType);
+   output->linkResults(studentType);
    window.addWidget(new GpaWidget);
    window.addWidget(new SatWidget);
    window.addWidget(new DollarsWidget);

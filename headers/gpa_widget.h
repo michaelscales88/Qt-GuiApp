@@ -6,19 +6,25 @@
 #include <QDoubleSpinBox>
 #include <QSlider>
 #include <QLabel>
+#include <QSignalMapper>
+#include <QLineEdit>
+#include <QVariant>
+#include <QString>
 
 #include <math.h>
+#include <base.h>
 
 using namespace std;
 
 
-class GpaWidget: public QWidget
+class GpaWidget: public Base
 {
    Q_OBJECT
 
 public:
    GpaWidget( QWidget *parent = 0 );
-   ~GpaWidget();
+   ~GpaWidget() {}
+   QHBoxLayout* getOutput();
 
 private slots:
    /* Update the spinbox:
@@ -39,9 +45,18 @@ private slots:
       slider->setValue(convertSpinBoxValueToSlider(spinBoxValue));
    }
 
+   /* Update the display:
+    *    Sets the display to the value of the spinner.
+    */
+   void updateDisplay(double value) {
+      display->setText(QString("%1").arg(value));
+   }
+
 private:
    QSlider *slider;
    QDoubleSpinBox *spinner;
+   QHBoxLayout* wigOutput;
+   QLineEdit* display;
 
    /* Transform doubles:
     *    Convert the double back into an int for the slider.

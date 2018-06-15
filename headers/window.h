@@ -3,8 +3,11 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QSpacerItem>
 
 #include "flowlayout.h"
+#include "output_widget.h"
+#include "base.h"
 
 using namespace std;
 
@@ -16,11 +19,13 @@ public:
    Window( QWidget *parent = 0 );
    ~Window() {}
 
-   void addWidget( QWidget *item = 0 );
+   void addWidget( Base *item = 0 );
    void initView();
+   void setOutput( OutputWidget *item = 0 );
 
 private:
    FlowLayout *wLayout;
+   QHBoxLayout *rLayout;
    QHBoxLayout *hLayout;
-   bool showWidgets;
+   OutputWidget *outputWidget;
 };

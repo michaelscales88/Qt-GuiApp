@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = app.app
 DEPENDPATH += . headers src
 INCLUDEPATH += . headers
+QMAKE_CXXFLAGS *= -std=gnu++11
 
 # Input
 HEADERS += headers/dollars_widget.h \
@@ -15,7 +16,8 @@ HEADERS += headers/dollars_widget.h \
            headers/window.h \
            headers/flowlayout.h \
            headers/student_selector.h \
-           headers/output_widget.h
+           headers/output_widget.h \
+           headers/base.h
 SOURCES += src/app.cpp \
            src/dollars_widget.cpp \
            src/gpa_widget.cpp \

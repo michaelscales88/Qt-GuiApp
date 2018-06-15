@@ -1,3 +1,6 @@
+/* Graphical User Interface Assignment Interface1 (I1)
+ * Developer: Michael Scales
+ */
 #include "student_selector.h"
 
 StudentSelector::StudentSelector(QWidget *parent)

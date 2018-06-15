@@ -1,3 +1,6 @@
+/* Graphical User Interface Assignment Interface1 (I1)
+ * Developer: Michael Scales
+ */
 #pragma once
 #include <iostream>
 #include <string>

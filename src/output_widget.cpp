@@ -1,3 +1,6 @@
+/* Graphical User Interface Assignment Interface1 (I1)
+ * Developer: Michael Scales
+ */
 #include "output_widget.h"
 
 OutputWidget::OutputWidget(QWidget *parent)

@@ -1,3 +1,6 @@
+/* Graphical User Interface Assignment Interface1 (I1)
+ * Developer: Michael Scales
+ */
 #include "hobbies_widget.h"
 
 HobbiesWidget::HobbiesWidget(QWidget *parent)

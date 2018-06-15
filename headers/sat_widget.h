@@ -2,8 +2,6 @@
  * Developer: Michael Scales
  */
 #pragma once
-#include <iostream>
-#include <string>
 #include <QWidget>
 #include <QComboBox>
 #include <QHBoxLayout>

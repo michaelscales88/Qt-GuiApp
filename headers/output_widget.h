@@ -1,5 +1,7 @@
+/* Graphical User Interface Assignment Interface1 (I1)
+ * Developer: Michael Scales
+ */
 #pragma once
-#include <iostream>
 #include <QWidget>
 #include <QGroupBox>
 #include <QVBoxLayout>
@@ -30,6 +32,10 @@ private slots:
       resultArea->show();
    }
 
+   /* Display the results:
+    *    Receive the information from the component and
+    *    generate the message..
+    */
    void receiveData(int value) {
       if (value == -2) {
          resultArea->setText(

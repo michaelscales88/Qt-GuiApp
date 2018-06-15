@@ -22,7 +22,7 @@ GpaWidget::GpaWidget(QWidget *parent)
    setLayout(layout);
 
    // Connect the spinbox and the slider so they
-   // update one another to match.
+   // update one another + match.
    connect(
       slider, SIGNAL(valueChanged(int)),
       SLOT(ChangeSpinBox(int))
@@ -38,7 +38,7 @@ GpaWidget::GpaWidget(QWidget *parent)
    display = new QLineEdit;
    display->setReadOnly(true);
 
-   // Set the display to update based on the input
+   // Set the display to update based on the spinner value
    connect(
       spinner, SIGNAL(valueChanged(double)),
       this, SLOT(updateDisplay(double))

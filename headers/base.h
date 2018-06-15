@@ -1,7 +1,6 @@
 #pragma once
 #include <QWidget>
 #include <QHBoxLayout>
-#include <iostream>
 
 using namespace std;
 

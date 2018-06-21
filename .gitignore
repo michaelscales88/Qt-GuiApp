@@ -12,6 +12,9 @@ generated_files/
 *.gch
 *.pch
 
+# Build artifacts
+Makefile
+
 # Compiled Dynamic libraries
 *.so
 *.dylib

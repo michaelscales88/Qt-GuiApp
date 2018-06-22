@@ -2,15 +2,7 @@
  * Developer: Michael Scales
  */
 #pragma once
-#include <QGroupBox>
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QRadioButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QString>
-#include <QSignalMapper>
-#include <QButtonGroup>
+#include <QtGui>
 
 #include "base.h"
 

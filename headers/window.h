@@ -2,33 +2,34 @@
  * Developer: Michael Scales
  */
 #pragma once
-#include <QWidget>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QSpacerItem>
+#include <QtGui>
 
 #include "flowlayout.h"
 #include "output_widget.h"
+#include "dollars_widget.h"
+#include "gpa_widget.h"
+#include "hobbies_widget.h"
+#include "output_widget.h"
+#include "sat_widget.h"
+#include "student_selector.h"
 #include "base.h"
 
 using namespace std;
 
-class Window: public QWidget
+class Window: public QMainWindow
 {
    Q_OBJECT
 
 public:
-   Window( QWidget *parent = 0 );
+   Window();
    ~Window() {}
 
-   void addWidget( Base *item = 0 );
-   void initView();
-   void setOutput( OutputWidget *item = 0 );
-
 private:
-   FlowLayout *wLayout;
-   QHBoxLayout *rLayout;
-   QHBoxLayout *hLayout;
-   OutputWidget *outputWidget;
+    void initWidgetsDock();
+    void initTextEditDock();
+    void createMenus();
+
+    QMenu *fileMenu;
+    QMenu *viewMenu;
+    QMenu *helpMenu;
 };

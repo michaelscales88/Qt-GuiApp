@@ -2,11 +2,7 @@
  * Developer: Michael Scales
  */
 #pragma once
-#include <QWidget>
-#include <QGroupBox>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QTextEdit>
+#include <QtGui>
 
 #include "student_selector.h"
 

@@ -3,55 +3,77 @@
  */
 #include "window.h"
 
-Window::Window(QWidget *parent)
-       :QWidget(parent)
+Window::Window()
 {
-   QVBoxLayout *mainLayout = new QVBoxLayout;
-   wLayout = new FlowLayout;
-   rLayout = new QHBoxLayout;
-   hLayout = new QHBoxLayout;
-   QSpacerItem* verticalSpacer = new QSpacerItem(
-      10, 10, QSizePolicy::Minimum, QSizePolicy::Expanding
-   );
-   mainLayout->addLayout(wLayout);  // widgets layout
-   mainLayout->addSpacerItem(verticalSpacer);
-   mainLayout->addLayout(rLayout);  // result area layout
-   mainLayout->addLayout(hLayout);  // buttons layout
-   setLayout(mainLayout);
-   resize(600, 600);
+    createMenus();
+    initWidgetsDock();
+    initTextEditDock();
+    setWindowTitle(tr("Informed Decision"));
+    show();
 }
 
-void Window::addWidget(Base *item)
-{
-   if (!item) return;
-
-   wLayout->addWidget(item);
-   outputWidget->addOutput(item->getOutput());
-   item->show();
+void Window::initTextEditDock() {
+    QDockWidget *dock = new QDockWidget(this);
+    dock->setWidget(new QTextEdit);
+    addDockWidget(Qt::RightDockWidgetArea, dock);
+    viewMenu->addAction(dock->toggleViewAction());
 }
 
-void Window::setOutput(OutputWidget *item)
+void Window::initWidgetsDock()
 {
-   if (!item) return;
+    // Create the widgets for the dock
+    OutputWidget *output = new OutputWidget();
+    StudentSelector *studentType = new StudentSelector();
+    GpaWidget *gpaWidget = new GpaWidget();
+    SatWidget *satWidget = new SatWidget();
+    DollarsWidget *dollarsWidget = new DollarsWidget();
+    HobbiesWidget *hobbiesWidget = new HobbiesWidget();
+    QPushButton *submitBtn = new QPushButton(tr("Submit"));
+    QPushButton *quitBtn = new QPushButton(tr("Exit"));
 
-   rLayout->addWidget((outputWidget = item));
-   outputWidget->show();
+    // Set widget behavior
+    output->addOutput(studentType->getOutput());
+    output->addOutput(gpaWidget->getOutput());
+    output->addOutput(satWidget->getOutput());
+    output->addOutput(dollarsWidget->getOutput());
+    output->addOutput(hobbiesWidget->getOutput());
+    output->linkResults(studentType);
+    connect(
+        submitBtn, SIGNAL(clicked()),
+        output, SLOT(submitForm()));
+    connect(
+        quitBtn, SIGNAL(clicked()),
+        this, SLOT(close()));
+
+    // Add the widgets in the order of display
+    FlowLayout *layout = new FlowLayout;
+    layout->addWidget(studentType);
+    layout->addWidget(gpaWidget);
+    layout->addWidget(satWidget);
+    layout->addWidget(dollarsWidget);
+    layout->addWidget(hobbiesWidget);
+    layout->addWidget(output);
+    layout->addWidget(submitBtn);
+    layout->addWidget(quitBtn);
+
+    QDockWidget *dock = new QDockWidget(this);
+    QWidget *dockWidgets = new QWidget;
+    dockWidgets->setLayout(layout);
+    dock->setWidget(dockWidgets);
+    addDockWidget(Qt::LeftDockWidgetArea, dock);
+    viewMenu->addAction(dock->toggleViewAction());
 }
 
-void Window::initView()
-{
-   QPushButton *submitBtn = new QPushButton(tr("Submit"));
-   QPushButton *quitBtn = new QPushButton(tr("Exit"));
-   hLayout->addWidget(submitBtn);
-   hLayout->addWidget(quitBtn);
-   connect(
-      submitBtn, SIGNAL(clicked()),
-      outputWidget, SLOT(submitForm())
-   );
-   connect(
-      quitBtn, SIGNAL(clicked()),
-      this, SLOT(close())
-   );
+void Window::createMenus() {
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    QAction *openAction = new QAction("&Open", this);
+    QAction *saveAction = new QAction("&Save", this);
+    QAction *quitAction = new QAction("&Exit", this);
+    connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
+    fileMenu->addAction(openAction);
+    fileMenu->addAction(saveAction);
+    fileMenu->addAction(quitAction);
 
-   show();
+    viewMenu = menuBar()->addMenu(tr("&View"));
+    helpMenu = menuBar()->addMenu(tr("&Help"));
 }

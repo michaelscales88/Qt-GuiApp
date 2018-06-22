@@ -1,6 +1,5 @@
 #pragma once
-#include <QWidget>
-#include <QHBoxLayout>
+#include <QtGui>
 
 using namespace std;
 

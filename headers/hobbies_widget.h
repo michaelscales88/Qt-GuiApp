@@ -2,14 +2,7 @@
  * Developer: Michael Scales
  */
 #pragma once
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QListWidget>
-#include <QLabel>
-#include <QString>
-#include <QSignalMapper>
-#include <QLineEdit>
+#include <QtGui>
 
 #include "base.h"
 

@@ -5,6 +5,7 @@
 #include <QtGui>
 
 #include "flowlayout.h"
+#include "distance_widget.h"
 #include "output_widget.h"
 #include "dollars_widget.h"
 #include "gpa_widget.h"
@@ -24,6 +25,11 @@ public:
    Window();
    ~Window() {}
 
+private slots:
+    void openFile();
+    void saveFile();
+    void aboutDialog();
+
 private:
     void initWidgetsDock();
     void initTextEditDock();
@@ -32,4 +38,5 @@ private:
     QMenu *fileMenu;
     QMenu *viewMenu;
     QMenu *helpMenu;
+    QTextEdit *textEdit;
 };

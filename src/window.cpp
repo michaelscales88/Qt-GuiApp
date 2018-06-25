@@ -13,6 +13,7 @@ Window::Window()
 }
 
 void Window::initTextEditDock() {
+    // Right dock area
     QDockWidget *dock = new QDockWidget(this);
     textEdit = new QTextEdit;
     dock->setWidget(textEdit);
@@ -59,6 +60,7 @@ void Window::initWidgetsDock()
 
     layout->addWidget(hobbiesWidget);
     layout->addWidget(distanceWidget);
+    
     QVBoxLayout* group2 = new QVBoxLayout;
     group2->addWidget(output);
     group2->addSpacerItem(
@@ -70,6 +72,7 @@ void Window::initWidgetsDock()
     group2->addLayout(btnGrp);
     layout->addItem(group2);
 
+    // Left Dock area
     QDockWidget *dock = new QDockWidget(this);
     QWidget *dockWidgets = new QWidget;
     dockWidgets->setLayout(layout);

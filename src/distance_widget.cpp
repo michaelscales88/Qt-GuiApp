@@ -12,11 +12,14 @@ DistanceWidget::DistanceWidget(QWidget *parent)
     );
     viewDisplay = new QLineEdit(this);
     QDial *viewDial = new QDial(this);
+    viewDial->setMinimum(0);
+    viewDial->setMaximum(10001);
     viewDisplay->setReadOnly(true);
-
+    QHBoxLayout *displayLayout = new QHBoxLayout;
+    displayLayout->addWidget(viewLabel);
+    displayLayout->addWidget(viewDisplay);
     QVBoxLayout *layout = new QVBoxLayout;    
-    layout->addWidget(viewLabel);
-    layout->addWidget(viewDisplay);
+    layout->addLayout(displayLayout);
     layout->addWidget(viewDial);
     setLayout(layout);
 

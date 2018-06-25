@@ -22,8 +22,12 @@ private slots:
     *
     */
    void updateDisplay(int value) {
-      viewDisplay->setText(QString::number(value));
-      outputDisplay->setText(QString::number(value));
+        QString text; 
+        if (value < 1) text = QString("< 1 mi");
+        else if (value > 10000) text = QString("> 10,0000 mi");
+        else text = QString("%1 mi").arg(value);
+        viewDisplay->setText(text);
+        outputDisplay->setText(text);
    }
 
 private:

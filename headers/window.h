@@ -26,17 +26,42 @@ public:
    ~Window() {}
 
 private slots:
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
     void openFile();
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
     void saveFile();
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
     void aboutDialog();
 
 private:
-    void initWidgetsDock();
-    void initTextEditDock();
-    void createMenus();
-
     QMenu *fileMenu;
     QMenu *viewMenu;
     QMenu *helpMenu;
     QTextEdit *textEdit;
+
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    void initWidgetsDock();
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    void initTextEditDock();
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    void createMenus();
+
 };

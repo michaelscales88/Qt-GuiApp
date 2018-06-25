@@ -8,53 +8,44 @@
 
 using namespace std;
 
-class OutputWidget: public QWidget
+class OutputWidget : public QWidget
 {
-   Q_OBJECT
+  Q_OBJECT
 
 public:
-   OutputWidget( QWidget *parent = 0 );
-   ~OutputWidget() {}
-   void addOutput( QHBoxLayout *item = 0 );
-   void linkResults(StudentSelector* select);
+  OutputWidget(QWidget *parent = 0);
+  ~OutputWidget() {}
+  /* addOutput:
+    *   
+    *   
+    */
+  void addOutput(QHBoxLayout *item = 0);
+  /* linkResults:
+    *   
+    */
+  void linkResults(StudentSelector *select);
 
 private slots:
-   /* Display the results:
+  /* submitForm:
     *    Submits the form to process the information
     *    and makes the area visible.
     */
-   void submitForm() {
-      emit requestData(true);
-      resultArea->show();
-   }
+  void submitForm();
 
-   /* Display the results:
+  /* receiveData:
     *    Receive the information from the component and
     *    generate the message..
     */
-   void receiveData(int value) {
-      if (value == -2) {
-         resultArea->setText(
-            "Based on your information, we have selected "
-            "the following schools for you:\n\nTexas State University\n"
-            "Awesome University\nUniversity of Texas\nGeorge Washing University\n\n"
-            "Required funds: $14,000 (first year)"
-         );
-       }
-       else {
-         resultArea->setText(
-            "Based on your information, we have selected "
-            "the following majors which may interest you:\n\nComputer Science"
-            "\nGeology\nUnderwater Basket Weaving\nCarpentry\n\n"
-            "Required funds: $14,000 (next year)"
-         );
-       }
-   }
+  void receiveData(int value);
 
 signals:
-   void requestData(bool value);
+  /* requestData:
+    *    Signals that the data from the other forms has 
+    *    been requested.
+    */
+  void requestData(bool value);
 
 private:
-   QVBoxLayout *layout;
-   QTextEdit* resultArea;
+  QVBoxLayout *layout;
+  QTextEdit *resultArea;
 };

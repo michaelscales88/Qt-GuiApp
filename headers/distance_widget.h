@@ -15,20 +15,18 @@ class DistanceWidget: public Base
 public:
    DistanceWidget( QWidget *parent = 0 );
    ~DistanceWidget() {}
+   /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
    QHBoxLayout* getOutput();
 
 private slots:
-   /* 
-    *
+   /* updateDisplay:
+    *   Takes an integer signal and determines the range.
+    *   Updates the display label and the output label.
     */
-   void updateDisplay(int value) {
-        QString text; 
-        if (value < 1) text = QString("< 1 mi");
-        else if (value > 10000) text = QString("> 10,0000 mi");
-        else text = QString("%1 mi").arg(value);
-        viewDisplay->setText(text);
-        outputDisplay->setText(text);
-   }
+   void updateDisplay(int value);
 
 private:
    QHBoxLayout* wigOutput;

@@ -18,16 +18,11 @@ public:
    QHBoxLayout* getOutput();
 
 private slots:
-   /* Update the display field:
+   /* updateDisplay:
     *    Sets the display field to the selected value in the
     *    list.
     */
-   void updateDisplay() {
-      if (list->currentItem()) {
-         const QString& value = list->currentItem()->text();
-         display->setText(value);
-      }
-   }
+   void updateDisplay();
 
 private:
    QHBoxLayout* wigOutput;

@@ -8,27 +8,35 @@
 
 using namespace std;
 
-class StudentSelector: public Base
+class StudentSelector : public Base
 {
-   Q_OBJECT
+    Q_OBJECT
 
-public:
-   StudentSelector( QWidget *parent = 0 );
-   ~StudentSelector() {}
-   QHBoxLayout* getOutput();
+  public:
+    StudentSelector(QWidget *parent = 0);
+    ~StudentSelector() {}
 
-private slots:
-   void dataRequested(bool value) {
-      if (value) {
-         int id = btnGroup->checkedId();
-         emit transmitData(id);
-      }
-   }
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    QHBoxLayout *getOutput();
 
-signals:
-   void transmitData(int value);
+  private slots:
+    /* dataRequested:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    void dataRequested(bool value);
 
-private:
-QHBoxLayout* wigOutput;
-   QButtonGroup* btnGroup;
+  signals:
+    /* transmitData:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    void transmitData(int value);
+
+  private:
+    QHBoxLayout *wigOutput;
+    QButtonGroup *btnGroup;
 };

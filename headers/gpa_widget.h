@@ -9,53 +9,48 @@
 
 using namespace std;
 
-
-class GpaWidget: public Base
+class GpaWidget : public Base
 {
-   Q_OBJECT
+    Q_OBJECT
 
-public:
-   GpaWidget( QWidget *parent = 0 );
-   ~GpaWidget() {}
-   QHBoxLayout* getOutput();
+  public:
+    GpaWidget(QWidget *parent = 0);
+    ~GpaWidget() {}
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    QHBoxLayout *getOutput();
 
-private slots:
-   /* Update the spinbox:
+  private slots:
+    /* changeSpinBox:
     *    Fn transforms between double and int. Uses a factor
     *    of 100 in order to cover 100s precision. E.g. 4.00
     */
-   void ChangeSpinBox(int sliderValue) {
-      if (convertSpinBoxValueToSlider(slider->value()) != sliderValue) {
-         spinner->setValue((double)sliderValue / 100);
-      }
-   }
+    void changeSpinBox(int sliderValue);
 
-   /* Update the slider:
+    /* changeSlider:
     *    Fn transforms the double back into an integer
     *    between 0 - 500. The range covers 0.00 - 5.00.
     */
-   void ChangeSlider(double spinBoxValue) {
-      slider->setValue(convertSpinBoxValueToSlider(spinBoxValue));
-   }
+    void changeSlider(double spinBoxValue);
 
-   /* Update the display:
+    /* updateDisplay:
     *    Sets the display to the value of the spinner.
     */
-   void updateDisplay(double value) {
-      display->setText(QString("%1").arg(value));
-   }
+    void updateDisplay(double value);
 
-private:
-   QSlider *slider;
-   QDoubleSpinBox *spinner;
-   QHBoxLayout* wigOutput;
-   QLineEdit* display;
+  private:
+    QSlider *slider;
+    QDoubleSpinBox *spinner;
+    QHBoxLayout *wigOutput;
+    QLineEdit *display;
 
-   /* Transform doubles:
+    /* convertSpinBoxValueToSlider:
     *    Convert the double back into an int for the slider.
-    */ 
-   static int convertSpinBoxValueToSlider(double value) {
-      return qRound(value * 100);
-   }
+    */
+    static int convertSpinBoxValueToSlider(double value)
+    {
+        return qRound(value * 100);
+    }
 };
-

@@ -47,7 +47,7 @@ void Window::initWidgetsDock()
         output, SLOT(submitForm()));
     connect(
         quitBtn, SIGNAL(clicked()),
-        this, SLOT(close()));
+        SLOT(close()));
 
     // Add the widgets in the order of display
     FlowLayout *layout = new FlowLayout(1, 1, 1);
@@ -60,7 +60,7 @@ void Window::initWidgetsDock()
 
     layout->addWidget(hobbiesWidget);
     layout->addWidget(distanceWidget);
-    
+
     QVBoxLayout* group2 = new QVBoxLayout;
     group2->addWidget(output);
     group2->addSpacerItem(
@@ -89,6 +89,7 @@ void Window::createMenus() {
     connect(saveAction, SIGNAL(triggered()), this, SLOT(saveFile()));
     QAction *quitAction = new QAction("&Quit", this);
     connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
+
     fileMenu->addAction(openAction);
     fileMenu->addAction(saveAction);
     fileMenu->addAction(quitAction);

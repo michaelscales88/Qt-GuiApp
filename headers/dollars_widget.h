@@ -15,6 +15,10 @@ class DollarsWidget: public Base
 public:
    DollarsWidget( QWidget *parent = 0 );
    ~DollarsWidget() {}
+   /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
    QHBoxLayout* getOutput();
 
 private:

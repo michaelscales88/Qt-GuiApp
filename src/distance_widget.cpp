@@ -7,9 +7,8 @@ DistanceWidget::DistanceWidget(QWidget *parent)
     : Base(parent)
 {
     // Configure view
-    QLabel* viewLabel = new QLabel(
-        tr("Select the maximum distance you are willing to travel:")
-    );
+    QLabel *viewLabel = new QLabel(
+        tr("Select the maximum distance you are willing to travel:"));
     viewDisplay = new QLineEdit(this);
     QDial *viewDial = new QDial(this);
     viewDial->setMinimum(0);
@@ -18,7 +17,7 @@ DistanceWidget::DistanceWidget(QWidget *parent)
     QHBoxLayout *displayLayout = new QHBoxLayout;
     displayLayout->addWidget(viewLabel);
     displayLayout->addWidget(viewDisplay);
-    QVBoxLayout *layout = new QVBoxLayout;    
+    QVBoxLayout *layout = new QVBoxLayout;
     layout->addLayout(displayLayout);
     layout->addWidget(viewDial);
     setLayout(layout);
@@ -38,4 +37,17 @@ DistanceWidget::DistanceWidget(QWidget *parent)
 QHBoxLayout *DistanceWidget::getOutput()
 {
     return wigOutput;
+}
+
+void DistanceWidget::updateDisplay(int value)
+{
+    QString text;
+    if (value < 1)
+        text = QString("< 1 mi");
+    else if (value > 10000)
+        text = QString("> 10,0000 mi");
+    else
+        text = QString("%1 mi").arg(value);
+    viewDisplay->setText(text);
+    outputDisplay->setText(text);
 }

@@ -4,29 +4,28 @@
 #include "dollars_widget.h"
 
 DollarsWidget::DollarsWidget(QWidget *parent)
-              :Base(parent)
+    : Base(parent)
 {
-   QLabel *label = new QLabel;
-   QLineEdit *input = new QLineEdit;
-   label->setText("Enter your available funds: $");
-   QHBoxLayout *layout = new QHBoxLayout;
-   layout->addWidget(label);
-   layout->addWidget(input);
-   setLayout(layout);
+  QLabel *label = new QLabel;
+  QLineEdit *input = new QLineEdit;
+  label->setText("Enter your available funds: $");
+  QHBoxLayout *layout = new QHBoxLayout;
+  layout->addWidget(label);
+  layout->addWidget(input);
+  setLayout(layout);
 
-   // Configure the display area for the widget
-   wigOutput = new QHBoxLayout;
-   QLabel *displayLabel = new QLabel(tr("Your funds: $"));
-   QLineEdit *display = new QLineEdit;
-   display->setReadOnly(true);
+  // Configure the display area for the widget
+  wigOutput = new QHBoxLayout;
+  QLabel *displayLabel = new QLabel(tr("Your funds: $"));
+  QLineEdit *display = new QLineEdit;
+  display->setReadOnly(true);
 
-   // Update the display area with our input
-   connect(
-      input, SIGNAL(textChanged(const QString&)),
-      display, SLOT(setText(const QString&))
-   );
-   wigOutput->addWidget(displayLabel);
-   wigOutput->addWidget(display);
+  // Update the display area with our input
+  connect(
+      input, SIGNAL(textChanged(const QString &)),
+      display, SLOT(setText(const QString &)));
+  wigOutput->addWidget(displayLabel);
+  wigOutput->addWidget(display);
 }
 
-QHBoxLayout* DollarsWidget::getOutput() { return wigOutput; }
+QHBoxLayout *DollarsWidget::getOutput() { return wigOutput; }

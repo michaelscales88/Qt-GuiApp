@@ -8,33 +8,33 @@
 
 using namespace std;
 
-class SatWidget: public Base
+class SatWidget : public Base
 {
-   Q_OBJECT
+    Q_OBJECT
 
-public:
-   SatWidget( QWidget *parent = 0 );
-   ~SatWidget() {}
-   /* getOutput:
+  public:
+    SatWidget(QWidget *parent = 0);
+    ~SatWidget() {}
+    /* getOutput:
     *   Return a QHBoxLayout with a output label and output
     *   display for the widget.
     */
-   QHBoxLayout* getOutput();
+    QHBoxLayout *getOutput();
 
-private slots:
-   /* updateDisplay:
+  private slots:
+    /* updateDisplay:
     *   Set the widgets output display based on the users 
     *   selected SAT value.
     */
-   void updateDisplay(int value);
+    void updateDisplay(int value);
 
-private:
-   QHBoxLayout* wigOutput;
-   QLineEdit* display;
+  private:
+    QHBoxLayout *wigOutput;
+    QLineEdit *display;
 
-   /* addItems:
+    /* addItems:
     *   Set the combo box items to contain values between
     *   0 - 2400 to represent the SAT score.
     */
-   void addItems(QComboBox* combo);
+    void addItems(QComboBox *combo);
 };

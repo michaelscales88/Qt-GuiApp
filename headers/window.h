@@ -17,15 +17,15 @@
 
 using namespace std;
 
-class Window: public QMainWindow
+class Window : public QMainWindow
 {
-   Q_OBJECT
+    Q_OBJECT
 
-public:
-   Window();
-   ~Window() {}
+  public:
+    Window();
+    ~Window() {}
 
-private slots:
+  private slots:
     /* getOutput:
     *   Return a QHBoxLayout with a output label and output
     *   display for the widget.
@@ -42,7 +42,7 @@ private slots:
     */
     void aboutDialog();
 
-private:
+  private:
     QMenu *fileMenu;
     QMenu *viewMenu;
     QMenu *helpMenu;
@@ -63,5 +63,4 @@ private:
     *   display for the widget.
     */
     void createMenus();
-
 };

@@ -16,12 +16,12 @@ public:
   OutputWidget(QWidget *parent = 0);
   ~OutputWidget() {}
   /* addOutput:
-    *   
-    *   
+    *   Add outputs from widgets to the output area.
     */
   void addOutput(QHBoxLayout *item = 0);
   /* linkResults:
-    *   
+    *   Connect the select widget behavior to the behavior
+    *   for the submit button.
     */
   void linkResults(StudentSelector *select);
 

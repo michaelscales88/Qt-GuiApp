@@ -8,28 +8,29 @@
 
 using namespace std;
 
-class DistanceWidget: public Base
+class DistanceWidget : public Base
 {
-   Q_OBJECT
+  Q_OBJECT
 
 public:
-   DistanceWidget( QWidget *parent = 0 );
-   ~DistanceWidget() {}
-   /* getOutput:
+  DistanceWidget(QWidget *parent = 0);
+  ~DistanceWidget() {}
+
+  /* getOutput:
     *   Return a QHBoxLayout with a output label and output
     *   display for the widget.
     */
-   QHBoxLayout* getOutput();
+  QHBoxLayout *getOutput();
 
 private slots:
-   /* updateDisplay:
+  /* updateDisplay:
     *   Takes an integer signal and determines the range.
     *   Updates the display label and the output label.
     */
-   void updateDisplay(int value);
+  void updateDisplay(int value);
 
 private:
-   QHBoxLayout* wigOutput;
-   QLineEdit* viewDisplay;
-   QLineEdit* outputDisplay;
+  QHBoxLayout *wigOutput;
+  QLineEdit *viewDisplay;
+  QLineEdit *outputDisplay;
 };

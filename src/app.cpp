@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I1)
+/* Graphical User Interface Assignment Interface1 (I2)
  * Developer: Michael Scales
  */
 #include <QtGui>

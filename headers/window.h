@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I1)
+/* Graphical User Interface Assignment Interface1 (I2)
  * Developer: Michael Scales
  */
 #pragma once
@@ -19,48 +19,47 @@ using namespace std;
 
 class Window : public QMainWindow
 {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    Window();
-    ~Window() {}
+public:
+  Window();
+  ~Window() {}
 
-  private slots:
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
+private slots:
+  /* openFile:
+    *   Open a OpenFileDialig and open the file to the Text Area.
     */
-    void openFile();
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
-    */
-    void saveFile();
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
-    */
-    void aboutDialog();
+  void openFile();
 
-  private:
-    QMenu *fileMenu;
-    QMenu *viewMenu;
-    QMenu *helpMenu;
-    QTextEdit *textEdit;
+  /* saveFile:
+    *  Open a SaveFileDialog and save the contents to the Text Area.
+    */
+  void saveFile();
+  
+  /* aboutDialog:
+    *   Open some basic information about the application.
+    */
+  void aboutDialog();
 
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
+private:
+  QMenu *fileMenu;
+  QMenu *viewMenu;
+  QMenu *helpMenu;
+  QTextEdit *textEdit;
+
+  /* initWidgetsDock:
+    *   Initialize all the widgets in the left dock area.
     */
-    void initWidgetsDock();
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
+  void initWidgetsDock();
+
+  /* initTextEditDock:
+    *   Initialie the Text Area for the open and save file options.
     */
-    void initTextEditDock();
-    /* getOutput:
-    *   Return a QHBoxLayout with a output label and output
-    *   display for the widget.
+  void initTextEditDock();
+
+  /* createMenus:
+    *   Create the menus based on the actions registered in the 
+    *   application.
     */
-    void createMenus();
+  void createMenus();
 };

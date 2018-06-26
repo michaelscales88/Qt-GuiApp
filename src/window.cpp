@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I1)
+/* Graphical User Interface Assignment Interface1 (I2)
  * Developer: Michael Scales
  */
 #include "window.h"
@@ -13,7 +13,8 @@ Window::Window()
     show();
 }
 
-void Window::initTextEditDock() {
+void Window::initTextEditDock()
+{
     // Right dock area
     QDockWidget *dock = new QDockWidget(this);
     textEdit = new QTextEdit;
@@ -71,12 +72,11 @@ void Window::initWidgetsDock()
     layout->addWidget(hobbiesWidget);
     layout->addWidget(distanceWidget);
 
-    QVBoxLayout* group2 = new QVBoxLayout;
+    QVBoxLayout *group2 = new QVBoxLayout;
     group2->addWidget(output);
     group2->addSpacerItem(
-        new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Expanding)
-    );
-    QHBoxLayout* btnGrp = new QHBoxLayout;
+        new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Expanding));
+    QHBoxLayout *btnGrp = new QHBoxLayout;
     btnGrp->addWidget(submitBtn);
     btnGrp->addWidget(quitBtn);
     group2->addLayout(btnGrp);
@@ -91,7 +91,8 @@ void Window::initWidgetsDock()
     viewMenu->addAction(dock->toggleViewAction());
 }
 
-void Window::createMenus() {
+void Window::createMenus()
+{
     fileMenu = menuBar()->addMenu(tr("&File"));
     QAction *openAction = new QAction("&Open", this);
     connect(openAction, SIGNAL(triggered()), this, SLOT(openFile()));
@@ -111,7 +112,8 @@ void Window::createMenus() {
     helpMenu->addAction(aboutAction);
 }
 
-void Window::openFile() {
+void Window::openFile()
+{
     QString fname = QFileDialog::getOpenFileName(this);
     QFile file(fname);
 
@@ -121,7 +123,8 @@ void Window::openFile() {
     textEdit->setText(ReadFile.readAll());
 }
 
-void Window::saveFile() {
+void Window::saveFile()
+{
     QString fname = QFileDialog::getSaveFileName(this);
     QFile outfile;
     outfile.setFileName(fname);
@@ -130,11 +133,11 @@ void Window::saveFile() {
     out << textEdit->toPlainText() << endl;
 }
 
-void Window::aboutDialog() {
+void Window::aboutDialog()
+{
     QMessageBox msgBox;
     msgBox.setText(
         "This progam was designed by Michael Scales for the Summer 2018 GUI class.\n"
-        "More information to follow..."
-    );
+        "More information to follow...");
     msgBox.exec();
 }

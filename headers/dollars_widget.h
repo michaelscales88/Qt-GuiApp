@@ -1,19 +1,27 @@
+/* Graphical User Interface Assignment Interface1 (I2)
+ * Developer: Michael Scales
+ */
 #pragma once
-#include <iostream>
-#include <string>
-#include <QWidget>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QLineEdit>
+#include <QtGui>
+
+#include "base.h"
 
 using namespace std;
 
-class DollarsWidget: public QWidget
+class DollarsWidget : public Base
 {
+    Q_OBJECT
 
-private:
+  public:
+    DollarsWidget(QWidget *parent = 0);
+    ~DollarsWidget() {}
 
-public:
-      DollarsWidget( QWidget *parent = 0 );
-      ~DollarsWidget() {}
+    /* getOutput:
+    *   Return a QHBoxLayout with a output label and output
+    *   display for the widget.
+    */
+    QHBoxLayout *getOutput();
+
+  private:
+    QHBoxLayout *wigOutput;
 };

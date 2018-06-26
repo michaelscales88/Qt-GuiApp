@@ -1,17 +1,32 @@
+/* Graphical User Interface Assignment Interface1 (I2)
+ * Developer: Michael Scales
+ */
 #pragma once
-#include <iostream>
-#include <string>
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QListWidget>
-#include <QLabel>
+#include <QtGui>
+
+#include "base.h"
 
 using namespace std;
 
-class HobbiesWidget: public QWidget {
-   private:
+class HobbiesWidget : public Base
+{
+    Q_OBJECT
 
-   public:
-      HobbiesWidget( QWidget *parent = 0 );
-      ~HobbiesWidget() {}
+  public:
+    HobbiesWidget(QWidget *parent = 0);
+    ~HobbiesWidget() {}
+    QHBoxLayout *getOutput();
+
+  private slots:
+    /* updateDisplay:
+    *    Sets the display field to the selected value in the
+    *    list.
+    */
+    void updateDisplay();
+
+  private:
+    QHBoxLayout *wigOutput;
+    void addItems(QListWidget *list);
+    QListWidget *list;
+    QLineEdit *display;
 };

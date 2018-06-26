@@ -8,6 +8,7 @@ Window::Window()
     createMenus();
     initWidgetsDock();
     initTextEditDock();
+    initOpenGl();
     setWindowTitle(tr("Informed Decision"));
     show();
 }
@@ -18,6 +19,15 @@ void Window::initTextEditDock() {
     textEdit = new QTextEdit;
     dock->setWidget(textEdit);
     addDockWidget(Qt::RightDockWidgetArea, dock);
+    viewMenu->addAction(dock->toggleViewAction());
+}
+
+void Window::initOpenGl() {
+    // Right dock area
+    QDockWidget *dock = new QDockWidget(this);
+    GraphicsWidget *wig = new GraphicsWidget();
+    dock->setWidget(wig);
+    addDockWidget(Qt::TopDockWidgetArea, dock);
     viewMenu->addAction(dock->toggleViewAction());
 }
 

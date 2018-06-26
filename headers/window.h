@@ -13,6 +13,7 @@
 #include "output_widget.h"
 #include "sat_widget.h"
 #include "student_selector.h"
+#include "graphics_widget.h"
 #include "base.h"
 
 using namespace std;
@@ -63,4 +64,5 @@ class Window : public QMainWindow
     *   display for the widget.
     */
     void createMenus();
+    void initOpenGl();
 };

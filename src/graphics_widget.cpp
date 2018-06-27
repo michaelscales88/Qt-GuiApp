@@ -36,9 +36,48 @@ void GraphicsWidget::paintGL()
   glClear(GL_COLOR_BUFFER_BIT);
   glClear(GL_DEPTH_BUFFER_BIT);
 
+  initPoint();
+  initLine();
+  initTriangle();
+  initQuad();
+  initHexagon();
+  //initCube();
+  glFlush();
+}
+
+void GraphicsWidget::initPoint()
+{
+  glPointSize(5.0);
+  glBegin(GL_POINTS);
+  glColor3f(0.0, 255.0, 0.0);
+  glVertex3f(0.0f, 0.5f, 0.0f);
+  glEnd();
+}
+
+void GraphicsWidget::initLine()
+{
+  glLineWidth(2.0);
+  glBegin(GL_LINES);
+  glColor3f(0.0, 0.0, 255.0);
+  glVertex3f(-1.0f, -1.0f, 0.0f); // origin of the line
+  glVertex3f(-1.0f, 1.0f, 0.0f);  // ending point of the line
+  glEnd();
+}
+
+void GraphicsWidget::initTriangle()
+{
+  glBegin(GL_TRIANGLES);
+  glColor3f(255.0, 0.0, 0.0);
+  glVertex3f(-0.2f, 0.0f, 0.0f); // origin of the line
+  glVertex3f(0.0f, 0.2f, 0.0f);  // ending point of the line
+  glVertex3f(0.2f, 0.0f, 0.0f);
+  glEnd();
+}
+
+void GraphicsWidget::initQuad()
+{
   float radius = 0.5;
 
-  //Draw a quad
   glBegin(GL_QUADS);
   glColor3f(1.0, 0.0, 0.0);
   glVertex3f(-radius, -radius, radius);
@@ -46,6 +85,21 @@ void GraphicsWidget::paintGL()
   glVertex3f(radius, radius, radius);
   glVertex3f(-radius, radius, radius);
   glEnd();
-
-  glFlush();
 }
+
+void GraphicsWidget::initHexagon()
+{
+  glBegin(GL_POLYGON);
+  glColor3f(1.0, 0.0, 0.0);
+  for (int i = 0; i < 6; ++i)
+  {
+    glVertex3f(
+      sin(i / 6.0 * 2 * M_PI),
+      cos(i / 6.0 * 2 * M_PI),
+      0.0f
+    );
+  }
+  glEnd();
+}
+
+void GraphicsWidget::initCube() {}

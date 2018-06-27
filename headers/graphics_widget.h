@@ -17,4 +17,12 @@ protected:
   void resizeGL(int w, int h);
   void paintGL();
   void ngon(int n);
+
+private:
+  void initPoint();
+  void initLine();
+  void initTriangle();
+  void initQuad();
+  void initHexagon();
+  void initCube();
 };

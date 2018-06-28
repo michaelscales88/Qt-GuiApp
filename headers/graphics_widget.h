@@ -9,7 +9,7 @@ class GraphicsWidget : public QGLWidget
   Q_OBJECT
 
 public:
-  GraphicsWidget(QWidget *parent = 0):QGLWidget(parent) {};
+  GraphicsWidget(QWidget *parent = 0) : QGLWidget(parent){};
   ~GraphicsWidget() {}
 
 protected:
@@ -19,10 +19,33 @@ protected:
   void ngon(int n);
 
 private:
+  /*
+   *
+   */
   void initPoint();
+
+  /*
+   *
+   */
   void initLine();
+
+  /*
+   *
+   */
   void initTriangle();
+
+  /*
+   *
+   */
   void initQuad();
+
+  /*
+   *
+   */
   void initHexagon();
+
+  /*
+   *
+   */
   void initCube();
 };

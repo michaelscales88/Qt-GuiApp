@@ -15,6 +15,7 @@ class OutputWidget : public QWidget
 public:
   OutputWidget(QWidget *parent = 0);
   ~OutputWidget() {}
+  
   /* addOutput:
     *   Add outputs from widgets to the output area.
     */

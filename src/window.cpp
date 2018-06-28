@@ -23,10 +23,12 @@ void Window::initTextEditDock()
     viewMenu->addAction(dock->toggleViewAction());
 }
 
-void Window::initOpenGl() {
-    // Right dock area
+void Window::initOpenGl()
+{
+    // Top dock area
     QDockWidget *dock = new QDockWidget(this);
     GraphicsWidget *wig = new GraphicsWidget();
+    wig->resize(800, 800);
     dock->setWidget(wig);
     addDockWidget(Qt::TopDockWidgetArea, dock);
     viewMenu->addAction(dock->toggleViewAction());

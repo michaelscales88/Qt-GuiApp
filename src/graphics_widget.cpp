@@ -51,7 +51,7 @@ void GraphicsWidget::paintGL()
   glLoadIdentity();
   glLineWidth(2.0);
   glTranslatef(-2.0, 3.0, 0);
-  glColor3f(255.0, 0.0, 0.0);
+  glColor3f(1.0f, 0.3f, 1.0f);
   initLine();
 
   glLoadIdentity();

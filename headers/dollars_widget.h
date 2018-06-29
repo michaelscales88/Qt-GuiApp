@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I2)
+/* Graphical User Interface Assignment Interface3 (I3)
  * Developer: Michael Scales
  */
 #pragma once
@@ -10,18 +10,18 @@ using namespace std;
 
 class DollarsWidget : public Base
 {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    DollarsWidget(QWidget *parent = 0);
-    ~DollarsWidget() {}
+public:
+  DollarsWidget(QWidget *parent = 0);
+  ~DollarsWidget() {}
 
-    /* getOutput:
+  /* getOutput:
     *   Return a QHBoxLayout with a output label and output
     *   display for the widget.
     */
-    QHBoxLayout *getOutput();
+  QHBoxLayout *getOutput();
 
-  private:
-    QHBoxLayout *wigOutput;
+private:
+  QHBoxLayout *wigOutput;
 };

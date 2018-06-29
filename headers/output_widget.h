@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I2)
+/* Graphical User Interface Assignment Interface3 (I3)
  * Developer: Michael Scales
  */
 #pragma once
@@ -15,7 +15,7 @@ class OutputWidget : public QWidget
 public:
   OutputWidget(QWidget *parent = 0);
   ~OutputWidget() {}
-  
+
   /* addOutput:
     *   Add outputs from widgets to the output area.
     */

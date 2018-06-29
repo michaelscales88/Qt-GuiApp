@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I2)
+/* Graphical User Interface Assignment Interface3 (I3)
  * Developer: Michael Scales
  */
 #pragma once
@@ -51,7 +51,7 @@ private:
   /* initWidgets:
     *   Create the widgets that we will add to the dock area.
     */
-  FlowLayout* initWidgets();
+  FlowLayout *initWidgets();
 
   /* initWidgetsDock:
     *   Initialize all the widgets in the left dock area.

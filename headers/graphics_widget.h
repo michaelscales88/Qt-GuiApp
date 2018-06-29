@@ -1,3 +1,6 @@
+/* Graphical User Interface Assignment Interface3 (I3)
+ * Developer: Michael Scales
+ */
 #pragma once
 
 using namespace std;

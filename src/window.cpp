@@ -37,7 +37,7 @@ void Window::initOpenGl()
     viewMenu->addAction(dock->toggleViewAction());
 }
 
-FlowLayout* Window::initWidgets()
+FlowLayout *Window::initWidgets()
 {
     // Create the widgets for the dock
     OutputWidget *output = new OutputWidget();
@@ -68,7 +68,7 @@ FlowLayout* Window::initWidgets()
         SLOT(close()));
 
     // Add the widgets in the order of display
-    FlowLayout* layout = new FlowLayout(1, 1, 1);
+    FlowLayout *layout = new FlowLayout(1, 1, 1);
 
     layout->addWidget(studentType);
 

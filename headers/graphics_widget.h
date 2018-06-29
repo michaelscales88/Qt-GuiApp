@@ -9,14 +9,16 @@ class GraphicsWidget : public QGLWidget
   Q_OBJECT
 
 public:
-  GraphicsWidget(QWidget *parent = 0) : QGLWidget(parent){};
+  GraphicsWidget(QWidget *parent = 0) : QGLWidget(parent) {};
   ~GraphicsWidget() {}
+
+  QSize minimumSizeHint() const;
+  QSize sizeHint() const;
 
 protected:
   void initializeGL();
   void resizeGL(int w, int h);
   void paintGL();
-  void ngon(int n);
 
 private:
   /*

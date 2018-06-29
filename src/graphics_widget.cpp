@@ -3,6 +3,16 @@
  */
 #include "graphics_widget.h"
 
+QSize GraphicsWidget::minimumSizeHint() const
+{
+  return QSize(200, 200);
+}
+
+QSize GraphicsWidget::sizeHint() const
+{
+  return QSize(800, 800);
+}
+
 //Initialize the GL settings
 void GraphicsWidget::initializeGL()
 {
@@ -10,15 +20,15 @@ void GraphicsWidget::initializeGL()
   glClearDepth(1.0f);
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
-  glShadeModel(GL_SMOOTH);   // Enable smooth shading
-  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);  // Nice perspective corrections
+  glShadeModel(GL_SMOOTH);                           // Enable smooth shading
+  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Nice perspective corrections
 }
 
 void GraphicsWidget::resizeGL(int w, int h)
 {
   // Manage aspect ratio when resizing
-  if (w > h) glViewport((w - h) / 2, 0, h, h);
-  else glViewport(0, (h - w) / 2, w, w);
+  int side = qMin(w, h);
+  glViewport((w - side) / 2, (h - side) / 2, side, side);
 
   // Configure display area
   glMatrixMode(GL_PROJECTION);
@@ -29,7 +39,7 @@ void GraphicsWidget::resizeGL(int w, int h)
 void GraphicsWidget::paintGL()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
-  glMatrixMode(GL_MODELVIEW); // Set model view for transformations
+  glMatrixMode(GL_MODELVIEW);                         // Set model view for transformations
 
   glLoadIdentity();
   glPointSize(4.0);
@@ -83,9 +93,9 @@ void GraphicsWidget::initLine()
 void GraphicsWidget::initTriangle()
 {
   glBegin(GL_TRIANGLES);
-  glVertex3f(-2.2f, 0.0f, 0.0f);  // left vertex
-  glVertex3f(0.0f, 2.2f, 0.0f);   // top  vertex
-  glVertex3f(2.2f, 0.0f, 0.0f);   // right vertx
+  glVertex3f(-2.2f, 0.0f, 0.0f); // left vertex
+  glVertex3f(0.0f, 2.2f, 0.0f);  // top  vertex
+  glVertex3f(2.2f, 0.0f, 0.0f);  // right vertx
   glEnd();
 }
 
@@ -121,24 +131,24 @@ void GraphicsWidget::initCube()
 
   // Top face
   glColor3f(0.0f, 1.0f, 0.0f);
-  glVertex3f(segLength, segLength, -segLength);   // top right
-  glVertex3f(-segLength, segLength, -segLength);  // top left
-  glVertex3f(-segLength, segLength, segLength);   // bottom left
-  glVertex3f(segLength, segLength, segLength);    // bottom right
+  glVertex3f(segLength, segLength, -segLength);  // top right
+  glVertex3f(-segLength, segLength, -segLength); // top left
+  glVertex3f(-segLength, segLength, segLength);  // bottom left
+  glVertex3f(segLength, segLength, segLength);   // bottom right
 
   // Bottom face
-  glColor3f(1.0f, 0.5f, 0.0f);
+  glColor3f(1.0f, 0.8f, 0.0f);
   glVertex3f(segLength, -segLength, segLength);   // top right
   glVertex3f(-segLength, -segLength, segLength);  // top left
   glVertex3f(-segLength, -segLength, -segLength); // bottom left
   glVertex3f(segLength, -segLength, -segLength);  // bottom right
 
   // Front face
-  glColor3f(1.0f, 0.0f, 0.0f);
-  glVertex3f(segLength, segLength, segLength);    // top right
-  glVertex3f(-segLength, segLength, segLength);   // top left
-  glVertex3f(-segLength, -segLength, segLength);  // bottom left
-  glVertex3f(segLength, -segLength, segLength);   // bottom right
+  glColor3f(0.9f, 0.0f, 0.0f);
+  glVertex3f(segLength, segLength, segLength);   // top right
+  glVertex3f(-segLength, segLength, segLength);  // top left
+  glVertex3f(-segLength, -segLength, segLength); // bottom left
+  glVertex3f(segLength, -segLength, segLength);  // bottom right
 
   // Back face
   glColor3f(1.0f, 1.0f, 0.0f);
@@ -148,7 +158,7 @@ void GraphicsWidget::initCube()
   glVertex3f(segLength, segLength, -segLength);   // bottom right
 
   // Left face
-  glColor3f(0.0f, 0.0f, 1.0f);
+  glColor3f(0.4f, 0.0f, 1.0f);
   glVertex3f(-segLength, segLength, segLength);   // top right
   glVertex3f(-segLength, segLength, -segLength);  // top left
   glVertex3f(-segLength, -segLength, -segLength); // bottom left
@@ -156,10 +166,10 @@ void GraphicsWidget::initCube()
 
   // Right face
   glColor3f(1.0f, 0.0f, 1.0f);
-  glVertex3f(segLength, segLength, -segLength);   // top right
-  glVertex3f(segLength, segLength, segLength);    // top left
-  glVertex3f(segLength, -segLength, segLength);   // bottom left
-  glVertex3f(segLength, -segLength, -segLength);  // bottom right
+  glVertex3f(segLength, segLength, -segLength);  // top right
+  glVertex3f(segLength, segLength, segLength);   // top left
+  glVertex3f(segLength, -segLength, segLength);  // bottom left
+  glVertex3f(segLength, -segLength, -segLength); // bottom right
 
   glEnd();
 }

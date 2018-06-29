@@ -33,7 +33,8 @@ void GraphicsWidget::resizeGL(int w, int h)
   // Configure display area
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -10.0, 10.0);
+  // Set the view area for the parallel projection
+  glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
 }
 
 void GraphicsWidget::paintGL()
@@ -54,22 +55,26 @@ void GraphicsWidget::paintGL()
   initLine();
 
   glLoadIdentity();
+  glLineWidth(2.0);
   glTranslatef(0.0, 5.0, 0);
   glColor3f(0.0, 0.0, 255.0);
   initTriangle();
 
   glLoadIdentity();
-  glTranslatef(0.0, -5.0, 0);
+  glLineWidth(2.0);
+  glTranslatef(2.0, -1.0, 0);
   glColor3f(255.0, 255.0, 0.0);
   initQuad();
 
   glLoadIdentity();
+  glLineWidth(2.0);
   glTranslatef(0.0, 2.0, 0);
   glColor3f(0.0, 255.0, 255.0);
   initHexagon();
 
   glLoadIdentity();
-  glTranslatef(-3.0, -4.0, 0);
+  glLineWidth(2.0);
+  glTranslatef(3.0, 4.0, 0);
   initCube();
 
   glFlush();
@@ -94,8 +99,8 @@ void GraphicsWidget::initTriangle()
 {
   glBegin(GL_TRIANGLES);
   glVertex3f(-2.2f, 0.0f, 0.0f); // left vertex
-  glVertex3f(0.0f, 2.2f, 0.0f);  // top  vertex
-  glVertex3f(2.2f, 0.0f, 0.0f);  // right vertx
+  glVertex3f(0.0f, 2.2f, 0.0f);  // top vertex
+  glVertex3f(2.2f, 0.0f, 0.0f);  // right vertex
   glEnd();
 }
 

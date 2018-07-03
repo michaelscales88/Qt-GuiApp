@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface1 (I2)
+/* Graphical User Interface Assignment Interface3 (I3)
  * Developer: Michael Scales
  */
 #pragma once
@@ -36,7 +36,6 @@ private slots:
     *  Open a SaveFileDialog and save the contents to the Text Area.
     */
   void saveFile();
-  
   /* aboutDialog:
     *   Open some basic information about the application.
     */
@@ -47,6 +46,11 @@ private:
   QMenu *viewMenu;
   QMenu *helpMenu;
   QTextEdit *textEdit;
+
+  /* initWidgets:
+    *   Create the widgets that we will add to the dock area.
+    */
+  FlowLayout *initWidgets();
 
   /* initWidgetsDock:
     *   Initialize all the widgets in the left dock area.
@@ -62,6 +66,11 @@ private:
     *   Create the menus based on the actions registered in the 
     *   application.
     */
-    void createMenus();
-    void initOpenGl();
+  void createMenus();
+
+  /* intOpenGL:
+    *   Create the widget that will display the graphics for the 
+    *   application.
+    */
+  void initOpenGl();
 };

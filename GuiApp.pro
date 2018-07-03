@@ -20,7 +20,8 @@ HEADERS += headers/dollars_widget.h \
            headers/output_widget.h \
            headers/base.h \
            headers/distance_widget.h \
-           headers/graphics_widget.h
+           headers/graphics_widget.h \
+           headers/graphics_widget2.h
 SOURCES += src/app.cpp \
            src/dollars_widget.cpp \
            src/gpa_widget.cpp \
@@ -31,7 +32,8 @@ SOURCES += src/app.cpp \
            src/student_selector.cpp \
            src/output_widget.cpp \
            src/distance_widget.cpp \
-           src/graphics_widget.cpp
+           src/graphics_widget.cpp \
+           src/graphics_widget2.cpp
 
 # Output
 DESTDIR=bin #Target file directory

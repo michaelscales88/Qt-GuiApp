@@ -26,7 +26,7 @@ void Window::initTextEditDock()
 void Window::initOpenGl()
 {
     // Top dock area
-    QDockWidget *dock = new QDockWidget("Graphics Area", this);
+    QDockWidget *dock = new QDockWidget("Graphics Window I", this);
     GraphicsWidget *wig = new GraphicsWidget();
     dock->setWidget(wig);
 
@@ -35,6 +35,18 @@ void Window::initOpenGl()
     wig->resize(800, 800);
     addDockWidget(Qt::TopDockWidgetArea, dock);
     viewMenu->addAction(dock->toggleViewAction());
+
+    // Bottom dock area
+    // Top dock area
+    QDockWidget *dock2 = new QDockWidget("Graphics Window II", this);
+    GraphicsWidget2 *wig2 = new GraphicsWidget2();
+    dock2->setWidget(wig2);
+
+    // Ensure that the widget sizes to 800 x 800 initially.
+    dock2->setFloating(true);
+    wig2->resize(800, 800);
+    addDockWidget(Qt::BottomDockWidgetArea, dock2);
+    viewMenu->addAction(dock2->toggleViewAction());
 }
 
 FlowLayout *Window::initWidgets()

@@ -14,6 +14,7 @@
 #include "sat_widget.h"
 #include "student_selector.h"
 #include "graphics_widget.h"
+#include "graphics_widget2.h"
 #include "base.h"
 
 using namespace std;

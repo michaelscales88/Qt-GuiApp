@@ -36,7 +36,6 @@ private slots:
     *  Open a SaveFileDialog and save the contents to the Text Area.
     */
   void saveFile();
-
   /* aboutDialog:
     *   Open some basic information about the application.
     */

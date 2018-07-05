@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #pragma once
@@ -15,6 +15,7 @@ class SatWidget : public Base
 public:
   SatWidget(QWidget *parent = 0);
   ~SatWidget() {}
+  
   /* getOutput:
     *   Return a QHBoxLayout with a output label and output
     *   display for the widget.

@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #pragma once
@@ -47,6 +47,10 @@ private:
   QMenu *viewMenu;
   QMenu *helpMenu;
   QTextEdit *textEdit;
+
+  /* createSlider:
+    *   Create and configure a slider. Returns a slider object.
+    */
   QSlider *createSlider();
 
   /* initWidgets:

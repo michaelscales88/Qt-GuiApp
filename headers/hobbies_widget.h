@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #pragma once
@@ -26,7 +26,11 @@ private slots:
 
 private:
   QHBoxLayout *wigOutput;
-  void addItems(QListWidget *list);
   QListWidget *list;
   QLineEdit *display;
+  
+  /* addItems:
+    *    Add a list of hobbies to the widget.
+    */
+  void addItems(QListWidget *list);
 };

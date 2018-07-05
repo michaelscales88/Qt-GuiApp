@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #include "graphics_widget.h"

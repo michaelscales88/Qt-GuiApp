@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #include "window.h"
@@ -41,10 +41,12 @@ void Window::initOpenGl()
     botDock->setFloating(true);
     botDock->resize(400, 400);
 
+    // OpenGL widget
     GraphicsWidget2 *curveWidget = new GraphicsWidget2(botDock);
     botDock->widget()->layout()->addWidget(curveWidget);
     curveWidget->resize(300, 300);
 
+    // Slider for the T boundaries
     QWidget *tSliderWidget = new QWidget();
     QHBoxLayout *tSliderPanel = new QHBoxLayout();
     QSlider *tSlider = createSlider();
@@ -56,6 +58,7 @@ void Window::initOpenGl()
         tSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setTValue(int))
     );
 
+    // Sliders for adjusting a, b, c of the eqn
     QWidget *coSliderWidget = new QWidget();
     QHBoxLayout *coSliderPanel = new QHBoxLayout();
     QSlider *aSlider = createSlider();

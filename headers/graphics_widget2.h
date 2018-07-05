@@ -1,4 +1,4 @@
-/* Graphical User Interface Assignment Interface3 (I3)
+/* Graphical User Interface Assignment Interface4 (I4)
  * Developer: Michael Scales
  */
 #pragma once
@@ -15,9 +15,10 @@ class GraphicsWidget2 : public QGLWidget
 
 public:
   GraphicsWidget2(QWidget *parent = 0)
-    :QGLWidget(parent), a(1), b(1), c(1), t(1) {
-      connect(this, SIGNAL(repaint()), SLOT(update()));
-    }
+      : QGLWidget(parent), a(1), b(1), c(1), t(1)
+  {
+    connect(this, SIGNAL(repaint()), SLOT(update()));
+  }
   ~GraphicsWidget2() {}
 
   /*  Size hints:
@@ -38,25 +39,29 @@ protected:
   void gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar);
 
 private slots:
-  void setAValue(int a) {
+  void setAValue(int a)
+  {
     this->a = a;
     emit repaint();
   }
-  void setBValue(int b) { 
+  void setBValue(int b)
+  {
     this->b = b;
     emit repaint();
   }
-  void setCValue(int c) {
+  void setCValue(int c)
+  {
     this->c = c;
     emit repaint();
   }
-  void setTValue(int t) {
+  void setTValue(int t)
+  {
     this->t = t;
     emit repaint();
   }
 
 signals:
-  /* transmitData:
+  /* repaint:
     *   Signal the data from the widget.
     */
   void repaint();

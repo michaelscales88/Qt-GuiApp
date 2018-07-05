@@ -16,37 +16,75 @@ Window::Window()
 void Window::initTextEditDock()
 {
     // Right dock area
-    QDockWidget *dock = new QDockWidget("Text Area", this);
+    QDockWidget *rightDock = getDock(tr("Text Area"));
+    addDockWidget(Qt::RightDockWidgetArea, rightDock);
     textEdit = new QTextEdit;
-    dock->setWidget(textEdit);
-    addDockWidget(Qt::RightDockWidgetArea, dock);
-    viewMenu->addAction(dock->toggleViewAction());
+    rightDock->widget()->layout()->addWidget(textEdit);
+    rightDock->hide();
 }
 
 void Window::initOpenGl()
 {
     // Top dock area
-    QDockWidget *dock = new QDockWidget("Graphics Window I", this);
-    GraphicsWidget *wig = new GraphicsWidget();
-    dock->setWidget(wig);
+    QDockWidget *topDock = getDock(tr("Graphics Window I"));
+    addDockWidget(Qt::TopDockWidgetArea, topDock);
+    topDock->setFloating(true);
+    topDock->resize(400, 400);
 
-    // Ensure that the widget sizes to 800 x 800 initially.
-    dock->setFloating(true);
-    wig->resize(800, 800);
-    addDockWidget(Qt::TopDockWidgetArea, dock);
-    viewMenu->addAction(dock->toggleViewAction());
+    GraphicsWidget *shapesWidget = new GraphicsWidget(topDock);
+    topDock->widget()->layout()->addWidget(shapesWidget);
+    shapesWidget->resize(300, 300);
 
     // Bottom dock area
-    // Top dock area
-    QDockWidget *dock2 = new QDockWidget("Graphics Window II", this);
-    GraphicsWidget2 *wig2 = new GraphicsWidget2();
-    dock2->setWidget(wig2);
+    QDockWidget *botDock = getDock(tr("Graphics Window II"));
+    addDockWidget(Qt::BottomDockWidgetArea, botDock);
+    botDock->setFloating(true);
+    botDock->resize(400, 400);
 
-    // Ensure that the widget sizes to 800 x 800 initially.
-    dock2->setFloating(true);
-    wig2->resize(800, 800);
-    addDockWidget(Qt::BottomDockWidgetArea, dock2);
-    viewMenu->addAction(dock2->toggleViewAction());
+    GraphicsWidget2 *curveWidget = new GraphicsWidget2(botDock);
+    botDock->widget()->layout()->addWidget(curveWidget);
+    curveWidget->resize(300, 300);
+
+    QWidget *sliderWidget = new QWidget();
+    QHBoxLayout *sliderPanel = new QHBoxLayout();
+    QSlider *aSlider = createSlider();
+    QSlider *bSlider = createSlider();
+    QSlider *cSlider = createSlider();
+    sliderPanel->addWidget(aSlider);
+    sliderPanel->addWidget(bSlider);
+    sliderPanel->addWidget(cSlider);
+    connect(
+        aSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setAValue(int))
+    );
+    connect(
+        bSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setBValue(int))
+    );
+    connect(
+        cSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setCValue(int))
+    );
+    sliderWidget->setLayout(sliderPanel);
+    botDock->widget()->layout()->addWidget(sliderWidget);
+}
+
+QSlider *Window::createSlider()
+{
+    QSlider *slider = new QSlider(Qt::Horizontal);
+    slider->setRange(0, 100);
+    slider->setSingleStep(1);
+    slider->setPageStep(10);
+    slider->setTickInterval(10);
+    slider->setTickPosition(QSlider::TicksRight);
+    return slider;
+}
+
+QDockWidget *Window::getDock(QString dockTitle)
+{
+    QDockWidget *dock = new QDockWidget(dockTitle, this);
+    QWidget *dockWidget = new QWidget(this);
+    dockWidget->setLayout(new QVBoxLayout);
+    dock->setWidget(dockWidget);
+    viewMenu->addAction(dock->toggleViewAction());
+    return dock;
 }
 
 FlowLayout *Window::initWidgets()
@@ -112,12 +150,12 @@ FlowLayout *Window::initWidgets()
 void Window::initWidgetsDock()
 {
     // Left Dock area
-    QDockWidget *dock = new QDockWidget("Widgets Area", this);
-    QWidget *dockWidgets = new QWidget;
-    dockWidgets->setLayout(initWidgets());
-    dock->setWidget(dockWidgets);
-    addDockWidget(Qt::LeftDockWidgetArea, dock);
-    viewMenu->addAction(dock->toggleViewAction());
+    QDockWidget *leftDock = getDock(tr("Widgets Area"));
+    addDockWidget(Qt::LeftDockWidgetArea, leftDock);
+    QWidget *dockshapesWidget = new QWidget;
+    dockshapesWidget->setLayout(initWidgets());
+    leftDock->widget()->layout()->addWidget(dockshapesWidget);
+    leftDock->hide();
 }
 
 void Window::createMenus()

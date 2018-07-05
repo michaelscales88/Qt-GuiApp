@@ -34,50 +34,66 @@ void GraphicsWidget::resizeGL(int w, int h)
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   // Set the view area for the parallel projection
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  // glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  gluPerspective(90.0, (float)w / (float)h, 5.0, 30.0);
 }
 
 void GraphicsWidget::paintGL()
 {
+  double distance = 15.0;
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
   glMatrixMode(GL_MODELVIEW);                         // Set model view for transformations
 
   glLoadIdentity();
   glPointSize(4.0);
-  glTranslatef(-8.0, 0.0, 0);
+  glTranslatef(-8.0, 0.0, -distance);
   glColor3f(0.0, 255.0, 0.0);
   initPoint();
 
   glLoadIdentity();
   glLineWidth(2.0);
-  glTranslatef(-2.0, 3.0, 0);
+  glTranslatef(-2.0, 3.0, -distance);
   glColor3f(1.0f, 0.3f, 1.0f);
   initLine();
 
   glLoadIdentity();
   glLineWidth(2.0);
-  glTranslatef(0.0, 5.0, 0);
+  glTranslatef(0.0, 5.0, -distance);
   glColor3f(0.0, 0.0, 255.0);
   initTriangle();
 
   glLoadIdentity();
   glLineWidth(2.0);
-  glTranslatef(2.0, -1.0, 0);
+  glTranslatef(2.0, -1.0, -distance);
   glColor3f(255.0, 255.0, 0.0);
   initQuad();
 
   glLoadIdentity();
   glLineWidth(2.0);
-  glTranslatef(0.0, 2.0, 0);
+  glTranslatef(0.0, 2.0, -distance);
   glColor3f(0.0, 255.0, 255.0);
   initHexagon();
 
   glLoadIdentity();
   glLineWidth(2.0);
-  glTranslatef(3.0, 4.0, 0);
+  glTranslatef(3.0, 4.0, -distance);
   initCube();
 
   glFlush();
+}
+
+void GraphicsWidget::gluPerspective(
+  GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar
+)
+{
+  GLdouble xmin, xmax, ymin, ymax;
+
+  ymax = zNear * tan(fovy * M_PI / 360.0);
+  ymin = -ymax;
+  xmin = ymin * aspect;
+  xmax = ymax * aspect;
+
+  glFrustum(xmin, xmax, ymin, ymax, zNear, zFar);
 }
 
 void GraphicsWidget::initPoint()

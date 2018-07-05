@@ -12,7 +12,7 @@ class GraphicsWidget : public QGLWidget
   Q_OBJECT
 
 public:
-  GraphicsWidget(QWidget *parent = 0) : QGLWidget(parent){};
+  GraphicsWidget(QWidget *parent = 0) : QGLWidget(parent) {}
   ~GraphicsWidget() {}
 
   /*  Size hints:
@@ -30,6 +30,7 @@ protected:
   void initializeGL();
   void resizeGL(int w, int h);
   void paintGL();
+  void gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar);
 
 private:
   /* initPoint:

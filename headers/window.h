@@ -47,6 +47,7 @@ private:
   QMenu *viewMenu;
   QMenu *helpMenu;
   QTextEdit *textEdit;
+  QSlider *createSlider();
 
   /* initWidgets:
     *   Create the widgets that we will add to the dock area.
@@ -74,4 +75,6 @@ private:
     *   application.
     */
   void initOpenGl();
+
+  QDockWidget* getDock(QString dockTitle);
 };

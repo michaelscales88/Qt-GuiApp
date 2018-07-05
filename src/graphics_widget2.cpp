@@ -34,19 +34,40 @@ void GraphicsWidget2::resizeGL(int w, int h)
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   // Set the view area for the parallel projection
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  //glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  gluPerspective(90.0, (float)w / (float)h, 5.0, 30.0);
 }
 
 void GraphicsWidget2::paintGL()
 {
+  double distance = 15.0;
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
   glMatrixMode(GL_MODELVIEW);                         // Set model view for transformations
 
   glLoadIdentity();
+  glTranslatef(0.0, 0.0, -distance);
   initCurve();
   glFlush();
 }
 
+void GraphicsWidget2::gluPerspective(
+  GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar
+)
+{
+  GLdouble xmin, xmax, ymin, ymax;
+
+  ymax = zNear * tan(fovy * M_PI / 360.0);
+  ymin = -ymax;
+  xmin = ymin * aspect;
+  xmax = ymax * aspect;
+
+  glFrustum(xmin, xmax, ymin, ymax, zNear, zFar);
+}
+
 void GraphicsWidget2::initCurve() {
-  
+  int boundary = 1000;
+  glBegin(GL_LINE_STRIP);
+  for (int x = -boundary; x <= boundary; x++)
+      glVertex3f((double)x, (double)(a * 1 + b * (1 * x) + (c * pow(x, 2))), 0.0);
+  glEnd();
 }

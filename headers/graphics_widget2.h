@@ -67,9 +67,9 @@ signals:
   void repaint();
 
 private:
-  /* initPoint:
-    *   Create a point at the specified glVertex(x, y, z) 
-    *   coordinate.
+  /* initCurve:
+    *   Create a curve along the specified glVertex(x, y, 0.0) 
+    *   coordinates. Fn: A + BX + CX^2 for -t < x < t
     */
   void initCurve();
   int a, b, c, t;

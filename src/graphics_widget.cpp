@@ -33,8 +33,8 @@ void GraphicsWidget::resizeGL(int w, int h)
   // Configure display area
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  // Set the view area for the parallel projection
-  // glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  
+  // Set the view area for the perspective projection
   gluPerspective(90.0, (float)w / (float)h, 5.0, 30.0);
 }
 

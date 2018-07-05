@@ -15,7 +15,7 @@ class GraphicsWidget2 : public QGLWidget
 
 public:
   GraphicsWidget2(QWidget *parent = 0)
-    :QGLWidget(parent), a(1), b(1), c(1) {
+    :QGLWidget(parent), a(1), b(1), c(1), t(1) {
       connect(this, SIGNAL(repaint()), SLOT(update()));
     }
   ~GraphicsWidget2() {}
@@ -50,6 +50,10 @@ private slots:
     this->c = c;
     emit repaint();
   }
+  void setTValue(int t) {
+    this->t = t;
+    emit repaint();
+  }
 
 signals:
   /* transmitData:
@@ -63,5 +67,5 @@ private:
     *   coordinate.
     */
   void initCurve();
-  int a, b, c;
+  int a, b, c, t;
 };

@@ -45,14 +45,28 @@ void Window::initOpenGl()
     botDock->widget()->layout()->addWidget(curveWidget);
     curveWidget->resize(300, 300);
 
-    QWidget *sliderWidget = new QWidget();
-    QHBoxLayout *sliderPanel = new QHBoxLayout();
+    QWidget *tSliderWidget = new QWidget();
+    QHBoxLayout *tSliderPanel = new QHBoxLayout();
+    QSlider *tSlider = createSlider();
+    tSliderPanel->addWidget(new QLabel(tr("T:")));
+    tSliderPanel->addWidget(tSlider);
+    tSliderWidget->setLayout(tSliderPanel);
+    botDock->widget()->layout()->addWidget(tSliderWidget);
+    connect(
+        tSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setTValue(int))
+    );
+
+    QWidget *coSliderWidget = new QWidget();
+    QHBoxLayout *coSliderPanel = new QHBoxLayout();
     QSlider *aSlider = createSlider();
     QSlider *bSlider = createSlider();
     QSlider *cSlider = createSlider();
-    sliderPanel->addWidget(aSlider);
-    sliderPanel->addWidget(bSlider);
-    sliderPanel->addWidget(cSlider);
+    coSliderPanel->addWidget(new QLabel(tr("A:")));
+    coSliderPanel->addWidget(aSlider);
+    coSliderPanel->addWidget(new QLabel(tr("B:")));
+    coSliderPanel->addWidget(bSlider);
+    coSliderPanel->addWidget(new QLabel(tr("C:")));
+    coSliderPanel->addWidget(cSlider);
     connect(
         aSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setAValue(int))
     );
@@ -62,8 +76,8 @@ void Window::initOpenGl()
     connect(
         cSlider, SIGNAL(valueChanged(int)), curveWidget, SLOT(setCValue(int))
     );
-    sliderWidget->setLayout(sliderPanel);
-    botDock->widget()->layout()->addWidget(sliderWidget);
+    coSliderWidget->setLayout(coSliderPanel);
+    botDock->widget()->layout()->addWidget(coSliderWidget);
 }
 
 QSlider *Window::createSlider()

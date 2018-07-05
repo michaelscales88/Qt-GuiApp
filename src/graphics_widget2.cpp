@@ -33,8 +33,8 @@ void GraphicsWidget2::resizeGL(int w, int h)
   // Configure display area
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  // Set the view area for the parallel projection
-  //glOrtho(-10.0, 10.0, -10.0, 10.0, -1.0, 1.0);
+  
+  // Set the view area for the perspective projection
   gluPerspective(90.0, (float)w / (float)h, 5.0, 30.0);
 }
 
@@ -45,14 +45,13 @@ void GraphicsWidget2::paintGL()
   glMatrixMode(GL_MODELVIEW);                         // Set model view for transformations
 
   glLoadIdentity();
-  glTranslatef(0.0, 0.0, -distance);
+  glTranslatef(0.0, -distance / 2, -distance);
   initCurve();
   glFlush();
 }
 
 void GraphicsWidget2::gluPerspective(
-  GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar
-)
+    GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar)
 {
   GLdouble xmin, xmax, ymin, ymax;
 
@@ -64,10 +63,14 @@ void GraphicsWidget2::gluPerspective(
   glFrustum(xmin, xmax, ymin, ymax, zNear, zFar);
 }
 
-void GraphicsWidget2::initCurve() {
-  int boundary = 1000;
+void GraphicsWidget2::initCurve()
+{
+  int boundary = t;
   glBegin(GL_LINE_STRIP);
   for (int x = -boundary; x <= boundary; x++)
-      glVertex3f((double)x, (double)(a * 1 + b * (1 * x) + (c * pow(x, 2))), 0.0);
+    glVertex3f(
+        (double)x,
+        (double)(a + (b * x) + (c * pow(x, 2))),
+        0.0);
   glEnd();
 }
